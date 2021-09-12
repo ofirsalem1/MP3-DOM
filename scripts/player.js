@@ -62,3 +62,69 @@ const player = {
         { id: 5, name: "Israeli", songs: [4, 5] },
     ],
 }
+function durationConvert(duration) // converts duration value to mm/ss
+{
+
+  if(typeof(duration)!=="number") //if duration is not a number
+    {
+    throw "not a suitable number"; 
+    }
+  else
+    {
+      let min = "";
+    if (Math.floor(duration/60)>=10) min = `${Math.floor(duration/60)}`;
+    if (Math.floor(duration/60)>=1 && Math.floor(duration/60)<10) min = `0${Math.floor(duration/60)}`;
+    if (Math.floor(duration/60)==0) min = "00";
+    let sec = "";
+    if ((duration%60)>=10) sec = `${duration%60}`;
+    if ((duration%60)>=1 && (duration%60)<10) sec = `0${duration%60}`;
+    if ((duration%60)==0) sec = `00`;
+    return min+":"+sec;    
+    }
+}
+function sortsongs()
+{
+     player.songs.sort(
+         (a,b) => 
+         {
+            if(a["title"].toLowerCase()<b["title"].toLowerCase())
+            {
+                return -1;; //sort by title
+            } 
+            return 1;
+        })
+
+}
+function sortplaylists()
+{
+    player.playlists.sort(
+        (a,b)=> {
+            if(a["name"].toLowerCase()<b["name"].toLowerCase())
+            {
+                return -1;
+            } 
+            return 1;
+            } 
+            ); //sort by name
+}
+function playlistDuration(id) {
+    let sum=0;
+    const playlistSongs=GetPlaylistById(id)["songs"]; //indicates songs array
+    for(let i of playlistSongs) //goes through all song id in array
+    {
+      let songduration= GetsongById(i)["duration"]; //gets the songs duration 
+      sum+=songduration;
+    }
+
+      return sum;
+    }
+function GetPlaylistById(id) //return playlist object by id
+{
+  let playObj= player.playlists.find(x=> x["id"]===id);
+  return playObj;
+}
+function GetsongById(id) //return song object by id
+{
+  let songObj= player.songs.find(x=> x["id"]===id);
+  return songObj;
+} 
