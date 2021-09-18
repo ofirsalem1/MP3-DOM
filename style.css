@@ -1,1 +1,42 @@
-/* Your code here */
+.divisions{
+    margin: 20px;
+    text-align: center;
+    font-size: x-large;
+    font-weight: 700;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+    background-color: blue;
+}
+div{
+    padding: 20px;
+}
+
+ul {
+    list-style-type: none;
+
+  }
+  img{
+      height: 100px;
+      width: 100px;
+  }
+#title{
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    color: rgb(60, 255, 0);
+    background-color: black;
+
+}
+#songs{
+    border: solid 10px rgb(0, 0, 0);
+}
+#playlists{
+    border-bottom: solid 5px rgb(0, 0, 0);
+    background-color: blue;
+}
+#songOutput{
+    text-align: center;
+    color: rgb(60, 255, 0);
+    background-color: black;
+
+} 
